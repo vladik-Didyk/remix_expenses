@@ -1,4 +1,4 @@
-// /expenses/<some-id> => /expenses/expense-1, /expenses/e-1
+// /_expenses/<some-id> => /_expenses/expense-1, /_expenses/e-1
 
 import type { LoaderFunction } from "@remix-run/react";
 import { useNavigate } from "@remix-run/react";
@@ -14,7 +14,7 @@ export default function UpdateExpensesPage(): JSX.Element {
 
   function closeModalHandler() {
     // Navigate programmatically to the previous page
-    navigate("..");
+    navigate("/expenses");
   }
 
   return (

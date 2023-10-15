@@ -9,7 +9,7 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export default function Index(): JSX.Element {
+export default function _marketing_index(): JSX.Element {
   return (
     <main>
       <section className="marketing-section">

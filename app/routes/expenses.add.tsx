@@ -1,4 +1,4 @@
-// /expenses/add
+// /_expenses/add
 
 import type { LoaderFunction } from "@remix-run/react";
 import { useNavigate } from "@remix-run/react";
@@ -14,7 +14,7 @@ export default function ExpensesAddPage(): JSX.Element {
 
   function closeModalHandler() {
     // Navigate programmatically to the previous page
-    navigate("..");
+    navigate("/expenses");
   }
 
   return (

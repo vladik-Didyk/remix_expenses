@@ -1,4 +1,4 @@
-// /expenses/analysis
+// /_expenses/analysis
 import type { LoaderFunction } from "@remix-run/react";
 
 import ExpensesStatitstics from "~/components/expenses/ExpenseStatistics";

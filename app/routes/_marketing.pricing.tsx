@@ -1,21 +1,30 @@
-// import { FaTrophy, FaHandshake } from 'react-icons/fa';
+// import { FaTrophy, FaHandshake } from "react-icons/fa";
 
 import PricingPlan from "~/components/marketing/PricingPlan";
+import type { LoaderFunction } from "@remix-run/react";
+
+export const loader: LoaderFunction = async () => {
+  return {};
+};
 
 const PRICING_PLANS = [
   {
     id: "p1",
     title: "Basic",
     price: "Free forever",
-    perks: ["1 User", "Up to 100 expenses/year", "Basic analytics"],
-    // icon: FaHandshake
+    perks: ["1 User", "Up to 100 _expenses/year", "Basic analytics"],
+    // icon: FaHandshake,
   },
   {
     id: "p2",
     title: "Pro",
     price: "$9.99/month",
-    perks: ["Unlimited Users", "Unlimited expenses/year", "Detailed analytics"],
-    // icon: FaTrophy
+    perks: [
+      "Unlimited Users",
+      "Unlimited _expenses/year",
+      "Detailed analytics",
+    ],
+    // icon: FaTrophy,
   },
 ];
 
@@ -30,7 +39,7 @@ export default function PricingPage() {
               title={plan.title}
               price={plan.price}
               perks={plan.perks}
-              icon={plan.icon}
+              // icon={plan.icon}
             />
           </li>
         ))}
@@ -38,5 +47,3 @@ export default function PricingPage() {
     </main>
   );
 }
-
-export function meta() {}
