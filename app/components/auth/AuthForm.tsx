@@ -14,7 +14,9 @@ function AuthForm() {
       </p>
       <div className="form-actions">
         <button>Login</button>
-        <a href="/auth">Log in with existing user</a>
+        <a href="/training/remix_expenses/app/routes/_marketing.auth">
+          Log in with existing user
+        </a>
       </div>
     </form>
   );
