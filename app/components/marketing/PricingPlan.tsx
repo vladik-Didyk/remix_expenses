@@ -1,11 +1,9 @@
-function PricingPlan({ title, price, perks, icon }) {
-  const Icon = icon;
+function PricingPlan({ title, price, perks, icon = "" }) {
+  // const Icon = icon;
   return (
     <article>
       <header>
-        <div className="icon">
-          <Icon />
-        </div>
+        <div className="icon">{/*<Icon />*/}</div>
         <h2>{title}</h2>
         <p>{price}</p>
       </header>
@@ -15,7 +13,7 @@ function PricingPlan({ title, price, perks, icon }) {
             <li key={perk}>{perk}</li>
           ))}
         </ol>
-        <div className='actions'>
+        <div className="actions">
           <a href="/not-implemented">Learn More</a>
         </div>
       </div>
