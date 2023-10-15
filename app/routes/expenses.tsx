@@ -1,6 +1,7 @@
 import type { LoaderFunction } from "@remix-run/react";
 import { Link, Outlet } from "@remix-run/react";
 import expensesStyles from "~/styles/expenses.css";
+import ExpensesList from "~/components/expenses/ExpensesList";
 
 export const links = () => {
   return [{ rel: "stylesheet", href: expensesStyles }];
@@ -9,13 +10,28 @@ export const loader: LoaderFunction = async () => {
   return {};
 };
 
+const DUMMY_EXPENSES = [
+  {
+    id: "e1",
+    title: "Toilet",
+    amount: 94.12,
+    date: new Date(2020, 7, 14),
+  },
+  {
+    id: "e2",
+    title: "Paper",
+    amount: 54.12,
+    date: new Date(2010, 7, 14),
+  },
+];
 export default function ExpensesLayout(): JSX.Element {
   console.log("ExpensesPage");
   return (
-    <main>
-      <p>Sheard element!</p>
-      <Link to="/expenses/raw">Go to Raw Expenses</Link>
+    <>
       <Outlet /> {/* This will render the nested route */}
-    </main>
+      <main>
+        <ExpensesList expenses={DUMMY_EXPENSES} />
+      </main>
+    </>
   );
 }
