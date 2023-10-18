@@ -6,7 +6,6 @@ export const links = () => {
   return [{ rel: "stylesheet", href: expensesStyles }];
 };
 export default function ExpensesAppLayout(): JSX.Element {
-  console.log("ExpensesAppLayout");
   return (
     <>
       <ExpensesHeader />

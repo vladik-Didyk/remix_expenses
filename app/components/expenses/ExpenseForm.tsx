@@ -2,7 +2,9 @@ import {
   Form,
   Link,
   useActionData,
+  // useMatches,
   useNavigation,
+  // useParams,
   useLoaderData,
 } from "@remix-run/react";
 
@@ -10,8 +12,22 @@ function ExpenseForm() {
   const today = new Date().toISOString().slice(0, 10); // yields something like 2023-09-10
   const validationErrors = useActionData();
   const navigation = useNavigation();
-  const expenseData = useLoaderData();
   const isSubmitting = navigation.state !== "idle";
+  const expenseData = useLoaderData();
+
+  // // // This block of code is better approach to get the data from the server - I didn't finish it, but it's a good example of how to do it - need to realize how to go to outer scope and get the data from the routes
+  // const params = useParams();
+  // const matches = useMatches();
+  // console.log("matches -> ", matches);
+  // const match = matches.find((match: string) => match.id == "routes/expenses");
+  // console.log("match -> ", match);
+  // const expenses = match ? match.data : null;
+  // console.log("expenses -> ", expenses);
+  // const expenseData = expenses
+  //   ? expenses.find((expense) => expense.id === params.id)
+  //   : null;
+
+  // console.log("expenseData -> ", expenseData);
 
   const defaultValues = expenseData
     ? {
