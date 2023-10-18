@@ -1,20 +1,18 @@
 import type { LinksFunction } from "@remix-run/node";
 import {
+  Link,
   Links,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteError,
 } from "@remix-run/react";
-
+import Error from "~/components/util/Error";
 import sharedStyles from "~/styles/shared.css";
 
-export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: sharedStyles }];
-};
-
-export default function App() {
+function Document({ title, children }) {
   return (
     <html lang="en">
       <head>
@@ -32,13 +30,48 @@ export default function App() {
         />
         <Meta />
         <Links />
+        <title>{title}</title>
       </head>
       <body>
-        <Outlet />
+        {children}
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
       </body>
     </html>
+  );
+}
+
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: sharedStyles }];
+};
+
+export function CatchBoundary() {
+  const caughtResponse = useRouteError();
+  console.log("caughtResponse -> ", caughtResponse);
+  return (
+    <Document title={caughtResponse.statusText}>
+      <main>
+        <Error title={caughtResponse.statusText}>
+          <p>
+            {caughtResponse.data?.message ||
+              "Something went wrong. Please try again later."}
+          </p>
+          <p>
+            Back to <Link to="/">saftey</Link>.
+          </p>
+        </Error>
+      </main>
+    </Document>
+  );
+}
+
+export function ErrorBoundary() {}
+
+export default function App() {
+  return (
+    <Document>
+      <Outlet />
+    </Document>
   );
 }
