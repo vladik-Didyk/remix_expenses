@@ -8,7 +8,7 @@ function ExpenseForm() {
     event.preventDefault();
     // perform your own validation
 
-    submit(envent.target, {
+    submit(event.target, {
       action: "/expenses/add",
       method: "post",
     });
