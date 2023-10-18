@@ -4,10 +4,13 @@ import type { LoaderFunction } from "@remix-run/react";
 import { useNavigate } from "@remix-run/react";
 import ExpenseForm from "~/components/expenses/ExpenseForm";
 import Modal from "~/components/util/Modal";
+import { getExpense } from "~/data/expenses.server";
 
-export const loader: LoaderFunction = async () => {
-  return {};
-};
+export async function loader({ params }): LoaderFunction {
+  const expenseId = params.id;
+  const expense = await getExpense(expenseId);
+  return expense;
+}
 
 export default function UpdateExpensesPage(): JSX.Element {
   const navigate = useNavigate();
