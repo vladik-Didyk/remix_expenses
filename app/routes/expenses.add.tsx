@@ -6,6 +6,7 @@ import ExpenseForm from "~/components/expenses/ExpenseForm";
 import Modal from "~/components/util/Modal";
 import { addExpense } from "~/data/expenses.server";
 import { redirect } from "@remix-run/node";
+import { validateExpenseInput } from "~/data/validation.server";
 
 export const loader: LoaderFunction = async () => {
   return {};
@@ -29,7 +30,13 @@ export default function ExpensesAddPage(): JSX.Element {
 export async function action({ request }) {
   const formData = await request.formData();
   const expenseData = Object.fromEntries(formData);
-  console.log(expenseData, formData);
+
+  try {
+    validateExpenseInput(expenseData);
+  } catch (error) {
+    return error;
+  }
+
   await addExpense(expenseData);
   return redirect("/expenses");
 }
